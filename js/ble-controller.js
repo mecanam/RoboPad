@@ -9,11 +9,6 @@ const BLE_CHAR_BUTTON_UUID    = '0000ffe2-0000-1000-8000-00805f9b34fb';
 const BLE_CHAR_SLIDER_I8_UUID = '0000ffe3-0000-1000-8000-00805f9b34fb';
 const BLE_CHAR_SLIDER_U8_UUID = '0000ffe4-0000-1000-8000-00805f9b34fb';
 
-/* ========= デバイスフィルター ========= */
-const filters = [{
-  serviceIds: [BLE_SERVICE_UUID],
-  namePrefix: 'robopad'
-}];
 
 export class BLEController {
   constructor({
@@ -50,8 +45,7 @@ export class BLEController {
     try {
       /* --- デバイス選択 --- */
       this.device = await navigator.bluetooth.requestDevice({
-        acceptAllDevices: false, 
-        filters: filters,
+        acceptAllDevices: true,
         optionalServices: [BLE_SERVICE_UUID]
       });
 
